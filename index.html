@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+	<head>
+		<title>QR Generator</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <link rel="stylesheet" href="index.css">
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="qrcode.js"></script>
+	</head>
+	<body>
+		<input id="text" type="text" value="vbnngvhn" style="width:40cqmax" placeholder="Texto a convertir"><br />
+		<div id="qrcode" style="width:40cqmax; height:40cqmax; margin-top:15px;"></div>
+
+	</body>
+
+	<script type="text/javascript">
+		var qrcode = new QRCode(document.getElementById("qrcode"));
+
+		function crearBCode () {		
+			var elText = document.getElementById("text");
+			
+			if (!elText.value) {
+				alert("Input a text");
+				elText.focus();
+				return;
+			}
+			
+			qrcode.makeCode(elText.value);
+		}
+
+		crearBCode();
+
+		$("#text").
+			on("blur", function () {
+				crearBCode();
+			}).
+			on("keydown", function (e) {
+				if (e.keyCode == 13) {
+					crearBCode();
+				}
+			});
+	</script>
+</html>
