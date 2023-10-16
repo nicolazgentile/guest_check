@@ -8,8 +8,9 @@
 		<script type="text/javascript" src="qrcode.js"></script>
 	</head>
 	<body>
-		<input id="text" type="text" value="" style="width:40cqmax" placeholder="Texto a convertir"><br />
+		<input id="text" type="text" value="Datos del invitado" style="width:40cqmax" placeholder="Texto a convertir"><br />
 		<input id="telefono" type="text" value="5492302591658" style="width:40cqmax" placeholder="Teléfono"><br />
+		<input id="imagen" type="text" value="/home/nico/Downloads/plot_image.png" style="width:40cqmax" placeholder="Image path"><br />
 		<div id="qrcode" style="width:40cqmax; height:40cqmax; margin-top:15px;"></div>
 		<button onclick="enviarMensaje()"> Open WhatsApp </button> 
 	</body>
@@ -43,9 +44,8 @@
 		function enviarMensaje() {
 			var text = document.getElementById("text").value;
 			var telefono = document.getElementById("telefono").value;
-			var URL_imagen = document.getElementById("qrcode").baseURI;
+			var URL_imagen = document.getElementById("imagen").value;
 			var message = encodeURIComponent(URL_imagen) + encodeURIComponent(text);
-			alert('https://wa.me/reemplazo0?text=reemplazo1'.replace('reemplazo0', telefono).replace('reemplazo1', message));
 			window.open('https://wa.me/reemplazo0?text=reemplazo1'.replace('reemplazo0', telefono).replace('reemplazo1', message));
 		}
 	</script>
